@@ -1,6 +1,7 @@
 /**
  * Gour Bongo TV - News Portal App
  * Powered by Google Sheets
+ * *Re-connected to github.*
  */
 
 // CONFIGURATION
