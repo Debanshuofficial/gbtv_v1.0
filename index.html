@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gour Bongo TV | Digital News Portal</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container nav-wrapper">
+            <!-- Tools: Clock & Live TV -->
+            <div class="header-tools">
+                <a href="#" class="logo">
+                    <img src="logo.png" alt="GBTV Logo">
+                    <span>GourBongoTV</span>
+                </a>
+
+            </div>
+
+            <!-- Desktop Nav -->
+            <nav class="main-nav">
+                <ul id="nav-list">
+                    <li><a href="#" class="active" data-cat="all">Home</a></li>
+                    <li><a href="#" data-cat="Nodiya">নদীয়া</a></li>
+                    <li><a href="#" data-cat="Rajya">রাজ্য</a></li>
+                    <li><a href="#" data-cat="Desh">দেশ</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">More <i class="fas fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="#" data-cat="Biswa">বিশ্ব</a></li>
+                            <li><a href="#" data-cat="Khela">খেলা</a></li>
+                            <li><a href="#" data-cat="Binodon">বিনোদন</a></li>
+                            <li><a href="#" data-cat="Swasthya">স্বাস্থ্য</a></li>
+                            <li><a href="#" data-cat="Projukti">প্রযুক্তি</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" data-cat="about">About Us</a></li>
+                    <li><a href="#" data-cat="contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div style="display:flex; align-items:center; gap:20px;">
+                <!-- Live TV Button -->
+                <a href="https://www.youtube.com/@gourbongotv" target="_blank" class="live-tv-btn">
+                    <i class="fas fa-circle"></i> Live TV
+                </a>
+
+                <!-- Clock -->
+                <div class="clock" id="clock-display">
+                    <div class="clock-time">00:00:00</div>
+                    <div class="clock-date">Mon, 1 Jan</div>
+                </div>
+
+                <div id="search-trigger" style="cursor: pointer; color: white;">
+                    <i class="fas fa-search"></i>
+                </div>
+                <button class="menu-toggle" aria-label="Open Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Marquee -->
+    <div class="news-ticker-wrap">
+        <div class="ticker-label">Latest</div>
+        <div class="ticker-content" id="marquee-content">
+            <!-- Dynamic ticker items -->
+            <span class="ticker-item">Welcome to Gour Bongo TV... Loading latest updates...</span>
+        </div>
+    </div>
+
+    <!-- Live TV Section -->
+    <section class="live-tv-section-start container">
+        <div class="live-tv-container">
+            <div class="live-window-header">
+                <div class="live-indicator">
+                    <span class="blink-dot"></span> LIVE
+                </div>
+                <h3>Gour Bongo TV Live</h3>
+            </div>
+            <div class="video-responsive">
+                <!-- REPLACE 'CHANNEL_ID' WITH YOUR ACTUAL YOUTUBE CHANNEL ID -->
+                <!-- Example: https://www.youtube.com/embed/live_stream?channel=UCxxxxxxxxxxxxxx -->
+                <!-- For now, using a placeholder video to demonstrate layout -->
+                <iframe width="560" height="315"
+                    src="https://www.youtube.com/embed/L7kRhAq-7u4?autoplay=1&mute=1&loop=1&playlist=L7kRhAq-7u4"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-nav">
+        <button class="close-menu">&times;</button>
+
+        <ul>
+            <li><a href="#" data-cat="all" onclick="closeMobileMenu()">Home</a></li>
+            <li><a href="#" data-cat="Nodiya" onclick="closeMobileMenu()">নদীয়া</a></li>
+            <li><a href="#" data-cat="Rajya" onclick="closeMobileMenu()">রাজ্য</a></li>
+            <li><a href="#" data-cat="Desh" onclick="closeMobileMenu()">দেশ</a></li>
+            <li><a href="#" data-cat="Biswa" onclick="closeMobileMenu()">বিশ্ব</a></li>
+            <li><a href="#" data-cat="Khela" onclick="closeMobileMenu()">খেলা</a></li>
+            <li><a href="#" data-cat="Binodon" onclick="closeMobileMenu()">বিনোদন</a></li>
+            <li><a href="#" data-cat="Swasthya" onclick="closeMobileMenu()">স্বাস্থ্য</a></li>
+            <li><a href="#" data-cat="Projukti" onclick="closeMobileMenu()">প্রযুক্তি</a></li>
+            <li><a href="#" data-cat="about" onclick="closeMobileMenu()">About Us</a></li>
+            <li><a href="#" data-cat="contact" onclick="closeMobileMenu()">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <!-- HOME VIEW -->
+        <div id="home-view">
+            <!-- Hero Section: Latest from Each Category -->
+            <section class="hero-section" id="hero-section">
+                <div class="hero-slider" id="hero-slider">
+                    <!-- Skeletons... -->
+                    <div class="hero-card loading-skeleton" style="flex: 0 0 45%; height: 100%;"></div>
+                    <div class="hero-card loading-skeleton" style="flex: 0 0 45%; height: 100%;"></div>
+                </div>
+            </section>
+
+            <!-- Category Grids -->
+            <div id="content-area">
+                <!-- Dynamic sections inserted here -->
+                <div class="loading-skeleton" style="height: 300px; width: 100%; border-radius: 16px;"></div>
+            </div>
+        </div>
+
+        <!-- ABOUT VIEW -->
+        <div id="about-view" class="hidden">
+            <div class="about-container">
+                <img src="https://via.placeholder.com/1200x500" alt="About GBTV" class="about-hero">
+                <div class="about-content">
+                    <h2>About Gour Bongo TV</h2>
+                    <p>Welcome to Gour Bongo TV, your trusted source for the latest news and updates. We are dedicated
+                        to providing accurate and timely information on local, national, and international events.</p>
+                    <p>Our mission is to empower our viewers with knowledge and foster a well-informed community.</p>
+
+                    <div class="about-address card-like">
+                        <h3>Our Office</h3>
+                        <p>123 News Street, Krishnanagar,<br>Nadia, West Bengal, 741101</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTACT VIEW -->
+        <div id="contact-view" class="hidden">
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h2>Contact Us</h2>
+                    <p>Get in touch with us for news tips, advertising, or inquiries.</p>
+
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Visit Us</h4>
+                                <p>123 News Street, Krishnanagar, Nadia, WB</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <h4>Call Us</h4>
+                                <p>+91 98765 43210</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email Us</h4>
+                                <p>contact@gourbongotv.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Embedded Map -->
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117565.41961601675!2d88.4239851125299!3d23.3999812921501!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f8e010839a8c17%3A0x677b064c24479e01!2sKrishnanagar%2C%20West%20Bengal!5e0!3m2!1sen!2sin!4v1650000000000!5m2!1sen!2sin"
+                            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+
+                <div class="contact-form-section">
+                    <h3>Send a Message</h3>
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email Address">
+                        </div>
+                        <div class="form-group">
+                            <textarea rows="5" placeholder="Message or News Tip..."></textarea>
+                        </div>
+                        <button type="button" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- ARTICLE DETAIL VIEW -->
+        <div id="article-view" class="hidden">
+            <!-- Dynamic Content -->
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <img src="logo.png" alt="GBTV" style="height: 60px; filter: grayscale(1); opacity: 0.7;">
+
+            <div class="social-links">
+                <a href="https://www.facebook.com/gourbongotv/" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.youtube.com/@gourbongotv" target="_blank" class="social-icon"><i
+                        class="fab fa-youtube"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            </div>
+
+            <p style="color: var(--text-muted); font-size: 0.9rem;">&copy; 2026 Gour Bongo TV. All rights reserved. <br>
+                Built with <span style="color: #e25555;">&#10084;</span> by <a href="https://dgofficial.dpdns.org/"
+                    target="_blank"><b><u>Debanshu Ghosh.</u></a></p>
+        </div>
+    </footer>
+
+    <!-- App Logic -->
+    <script src="app.js"></script>
+    <script>
+        // Mobile Menu Logic
+        const menuToggle = document.querySelector('.menu-toggle');
+        const closeBtn = document.querySelector('.close-menu');
+        const mobileNav = document.querySelector('.mobile-nav');
+
+        function openMobileMenu() {
+            mobileNav.classList.add('open');
+            document.body.classList.add('no-scroll');
+        }
+
+        function closeMobileMenu() {
+            mobileNav.classList.remove('open');
+            document.body.classList.remove('no-scroll');
+        }
+
+        menuToggle.addEventListener('click', openMobileMenu);
+        closeBtn.addEventListener('click', closeMobileMenu);
+    </script>
+</body>
+
+</html>
